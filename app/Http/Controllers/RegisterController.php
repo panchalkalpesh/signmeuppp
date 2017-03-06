@@ -70,7 +70,7 @@ class RegisterController extends Controller
 
         /* Custom message for validation rules */
         $messages = [
-            'check_intiails' => 'Invalid Initials Provided',
+            'check_initials' => 'Invalid Initials Provided',
             'phone.phone_number' => 'Invalid Phone Number'
         ];
 
