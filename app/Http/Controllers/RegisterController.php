@@ -29,19 +29,19 @@ class RegisterController extends Controller
         // turns key/pair into array except for _token (laravel security feature to prevent CSRF attacks)
         $arrayData = array_except($request->all(), '_token');
 
-        Validator::extend('checkInitials', function($attribute, $value, $parameters, $validator){
+        // Validator::extend('checkInitials', function($attribute, $value, $parameters, $validator){
             
-            $firstName = array_get($validator->getData(), 'firstName');
-            var_dump($firstName);
-            // $firstName = strtoupper($firstName);
-            // $firstLetter = substr($firstName, 0, 1);
+        //     $firstName = array_get($validator->getData(), 'firstName');
+        //     var_dump($firstName);
+        //     // $firstName = strtoupper($firstName);
+        //     // $firstLetter = substr($firstName, 0, 1);
 
-            // $firstInitial = substr($substr, 0, 1);
-            // $firstInitial = substr($firstInitial, 0, 1);
+        //     // $firstInitial = substr($substr, 0, 1);
+        //     // $firstInitial = substr($firstInitial, 0, 1);
 
-            // return $firstName == $firstInitial;
+        //     // return $firstName == $firstInitial;
 
-        });
+        // });
 
         Validator::extend('phone_number', function($attribute, $value, $parameters){
             return substr($value, 0, 2) == '01';
@@ -49,7 +49,7 @@ class RegisterController extends Controller
 
         $rules = [
             'firstName' => 'required',
-            'initials' => 'required|checkInitials:firstName',
+            'initials' => 'required', //|checkInitials:firstName
             'email' => 'required|email',
             'phone' => 'required|numeric|phone_number',
             'postalCode' => 'required|size:6',
