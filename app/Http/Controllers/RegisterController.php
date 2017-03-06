@@ -31,8 +31,18 @@ class RegisterController extends Controller
 
         Validator::extend('checkInitials', function($attribute, $value, $parameters, $validator){
             
-            $firstName = array_get($validator->getData(), 'firstName');
-            var_dump($firstName);
+            $firstName = array_get($validator->getData(), $parameters[0]);
+
+            // To match the first letter of parameter value with the initial value
+            return ($value == $firstName[0]);
+
+            /*
+             * To allow following initials:
+             * A.   A.B.    A.B.C.
+             * Regex: ^(?:[A-Z]\.){1,3}$
+             */
+
+
             // $firstName = strtoupper($firstName);
             // $firstLetter = substr($firstName, 0, 1);
 
