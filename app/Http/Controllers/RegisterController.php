@@ -30,7 +30,7 @@ class RegisterController extends Controller
         $arrayData = array_except($request->all(), '_token');
 
         Validator::extend('checkInitials', function($attribute, $value, $parameters, $validator){
-            
+
             $firstName = array_get($validator->getData(), $parameters[0]);
 
             // To match the first letter of parameter value with the initial value
@@ -41,7 +41,6 @@ class RegisterController extends Controller
              * A.   A.B.    A.B.C.
              * Regex: ^(?:[A-Z]\.){1,3}$
              */
-
 
             // $firstName = strtoupper($firstName);
             // $firstLetter = substr($firstName, 0, 1);
@@ -59,7 +58,7 @@ class RegisterController extends Controller
 
         $rules = [
             'firstName' => 'required',
-            'initials' => 'required|checkInitials:firstName',
+            'initials' => 'required', //|checkInitials:firstName
             'email' => 'required|email',
             'phone' => 'required|numeric|phone_number',
             'postalCode' => 'required|size:6',
