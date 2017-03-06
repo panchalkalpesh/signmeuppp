@@ -67,7 +67,14 @@ class RegisterController extends Controller
             //regular expression taken from https://gist.github.com/Michael-Brooks/fbbba105cd816ef5c016
         ];
 
-        $valid = Validator::make($arrayData, $rules);
+
+        /* Custom message for validation rules */
+        $messages = [
+            'check_intiails' => 'Invalid Initials Provided',
+            'phone.phone_number' => 'Invalid Phone Number'
+        ];
+
+        $valid = Validator::make($arrayData, $rules, $messages);
 
         if( $valid->passes() ){
             /* Form Validation was successful */
